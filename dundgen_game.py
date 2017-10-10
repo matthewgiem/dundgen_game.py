@@ -19,19 +19,31 @@ CELLS = [
 ]
 
 def move_player(player, direction):
-    # get players location
-    # if move == up y + 1
-    # if move == down y - 1
-    # if move == right x + 1
-    # if move == left x - 1
+    x = player[0]
+    y = player[1]
+    if move == "UP":
+        y += 1
+    if move == "DOWN":
+        y -= 1
+    if move == "RIGHT":
+        x += 1
+    if move == "LEFT":
+        x -= 1
+    player = (x, y)
     return player
 
 def get_moves(player):
-    moves = ["RIGHT", "LEFT", "UP", "DOWN"]
-    # if players y == 0 can't move up
-    # if players y == 4 can't move down
-    # if players x == 0 can't move left
-    # if players x == 4 can't move right
+    moves = ["RIGHT", "LEFT", "DOWN", "UP"]
+    x = player[0]
+    y = player[1]
+    if players y == 0:
+        moves.pop()
+    if players y == 4:
+        moves.pop(2)
+    if players x == 0:
+        moves.pop(1)
+    if players x == 4:
+        moves.pop(0)
     return moves
 
 while True:
