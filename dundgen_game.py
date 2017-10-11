@@ -68,6 +68,13 @@ while True:
         break
 
     player = move_player(player, move)
+    if player == door:
+        print("congradulations you fond the door and won!!")
+        break
+    if player == dragon:
+        print("I'm sorry you ran in to the dragon!! you lost")
+        break
+    clear_screen()
 
     #good move => change player position
     #bad move => alert player and don't change position
