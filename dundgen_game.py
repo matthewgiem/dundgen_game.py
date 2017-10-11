@@ -1,4 +1,5 @@
 import random
+import os
 
 #draw the grid
 #pic random location for player
@@ -18,7 +19,13 @@ CELLS = [
         (0,4), (1,4), (2,4), (3,4), (4,4)
 ]
 
-def move_player(player, direction):
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def get_locations():
+    return random.sample(CELLS, 3)
+
+def move_player(player, move):
     x = player[0]
     y = player[1]
     if move == "UP":
@@ -36,20 +43,22 @@ def get_moves(player):
     moves = ["RIGHT", "LEFT", "DOWN", "UP"]
     x = player[0]
     y = player[1]
-    if players y == 0:
+    if y == 0:
         moves.pop()
-    if players y == 4:
+    if y == 4:
         moves.pop(2)
-    if players x == 0:
+    if x == 0:
         moves.pop(1)
-    if players x == 4:
+    if x == 4:
         moves.pop(0)
     return moves
 
+dragon, player, door = get_locations()
+
 while True:
     print("Welcome to the Dundgen")
-    print("You're currently in room {}")  #fill with player room
-    print("You can move {}")  #fill with available moves
+    print("You're currently in room {}".format(player))  #fill with player room
+    print("You can move {}".format(", ".join(get_moves(player))))  #fill with available moves
     print("You can QUIT to quit")
 
     move = raw_input("> ")
@@ -57,6 +66,8 @@ while True:
 
     if move == "QUIT":
         break
+
+    player = move_player(player, move)
 
     #good move => change player position
     #bad move => alert player and don't change position
