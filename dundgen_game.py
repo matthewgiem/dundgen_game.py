@@ -18,6 +18,26 @@ CELLS = [
         (0,4), (1,4), (2,4), (3,4), (4,4)
 ]
 
+def draw_map(player):
+    print(" _"*5)
+    line = []
+    for cell in CELLS:
+        x, y = cell
+        if x < 4:
+            if cell == player:
+                line.append("|X")
+            else:
+                line.append("|_")
+        else:
+            if cell == player:
+                line.append("|X|")
+            else:
+                line.append("|_|")
+        if x == 4:
+            print("".join(line))
+            line = []
+
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -66,6 +86,7 @@ while True:
         print("you cant move there!")
     if wrong_move == 2:
         print("that move isn't an option")
+    draw_map(player)
     move = raw_input("> ")
     move = move.upper()
 
