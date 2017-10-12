@@ -50,9 +50,9 @@ def move_player(player, move):
     x = player[0]
     y = player[1]
     if move == "UP":
-        y += 1
-    if move == "DOWN":
         y -= 1
+    if move == "DOWN":
+        y += 1
     if move == "RIGHT":
         x += 1
     if move == "LEFT":
